@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bike Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styles - Matching Original */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c2c2c;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links li a,
+        .nav-links a {
+            text-decoration: none;
+            color: #2c2c2c;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover,
+        .nav-links a:hover {
+            color: #84cc16;
+        }
+
+        .login-btn {
+            background: #84cc16;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: #65a30d;
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            padding: 50px 20px;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .contact-wrapper {
+            display: flex;
+            min-height: 600px;
+        }
+
+        .contact-form {
+            flex: 1;
+            padding: 60px 50px;
+            position: relative;
+        }
+
+        .contact-info {
+            flex: 1;
+            background: #2c2c2c;
+            color: white;
+            padding: 60px 50px;
+            position: relative;
+        }
+
+        .geometric-shape {
+            position: absolute;
+            background: #84cc16;
+            border-radius: 10px;
+        }
+
+        .shape-1 {
+            width: 80px;
+            height: 80px;
+            top: -20px;
+            left: -20px;
+            transform: rotate(45deg);
+        }
+
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            bottom: 100px;
+            left: -10px;
+            border-radius: 50%;
+        }
+
+        .shape-3 {
+            width: 120px;
+            height: 120px;
+            top: -30px;
+            right: -30px;
+            opacity: 0.8;
+        }
+
+        .shape-4 {
+            width: 40px;
+            height: 40px;
+            bottom: 50px;
+            right: 50px;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2c2c2c;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background: #f9f9f9;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #84cc16;
+            background: white;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #2c2c2c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: #84cc16;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(132, 204, 22, 0.3);
+        }
+
+        .info-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: #84cc16;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 20px;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-text p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: #84cc16;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: #84cc16;
+            transform: translateY(-3px);
+        }
+
+        .success-message {
+            background: #84cc16;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .contact-wrapper {
+                flex-direction: column;
+            }
+            
+            .contact-form,
+            .contact-info {
+                padding: 40px 30px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .info-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header - Same as original -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">🚴 veloVibe</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="contact.html" style="color: #84cc16; font-weight: 600;">Contact</a></li>
+                </ul>
+                <button class="login-btn">Login</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="contact-container">
+        <div class="geometric-shape shape-1"></div>
+        <div class="geometric-shape shape-3"></div>
+        
+        <div class="contact-wrapper">
+            <div class="contact-form">
+                <div class="geometric-shape shape-2"></div>
+                
+                <h2>Contact Us</h2>
+                <p class="subtitle">Feel free to contact us any time. We will get back to you as soon as we can!</p>
+                
+                <div class="success-message" id="successMessage">
+                    Thank you! Your message has been sent successfully.
+                </div>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send</button>
+                </form>
+            </div>
+            
+            <div class="contact-info">
+                <div class="geometric-shape shape-4"></div>
+                
+                <h3 class="info-title">Info</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        ✉️
+                    </div>
+                    <div class="info-text">
+                        <p>info@bikestore.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        📞
+                    </div>
+                    <div class="info-text">
+                        <p>+62 821 7061 5826</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        📍
+                    </div>
+                    <div class="info-text">
+                        <p>Jl. nagoya<br>Batam, Indonesia</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        🕐
+                    </div>
+                    <div class="info-text">
+                        <p>09:00 - 18:00<br>Monday - Saturday</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+                
+                // Here you would normally send the data to your server
+                console.log('Form submitted:', { name, email, message });
+                
+            }, 2000);
+        });
+        
+        // Add some interactive effects
+        document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Social links interaction
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Social media link clicked! You can add your actual social media URLs here.');
+            });
+        });
+    </script>
+</body>
+</html>

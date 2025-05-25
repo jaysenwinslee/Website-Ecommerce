@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BikeShop - Toko Sepeda Online</title>
+    <style>
+        /* CSS Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+        
+        .logo span {
+            color: #e74c3c;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            cursor: pointer;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #2c3e50;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .products {
+            background-color: #ecf0f1;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .product-info p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+        
+        .product-detail {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .product-detail-image {
+            flex: 1;
+        }
+        
+        .product-detail-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .product-detail-info {
+            flex: 1;
+        }
+        
+        .product-detail-info h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .product-detail-price {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        .product-detail-desc {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-specs {
+            margin-top: 1.5rem;
+        }
+        
+        .product-specs h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-specs ul {
+            list-style-position: inside;
+        }
+        
+        .product-specs li {
+            margin-bottom: 0.3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .product-detail {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">JW<span>BIKESHOP</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Selamat Datang di JW Bike Shop</h1>
+            <p>Temukan sepeda impian Anda dengan kualitas terbaik dan harga terjangkau. Berbagai macam jenis sepeda tersedia untuk semua kebutuhan Anda.</p>
+            <a href="#products" class="btn">Lihat Produk</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Kami</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Selamat datang di JW Bike Shop, toko sepeda terpercaya yang telah melayani pelanggan sejak tahun 2015. Dengan pengalaman lebih dari 10 tahun, kami bangga menjadi salah satu toko sepeda terbaik di Batam, berlokasi strategis di kawasan Nagoya.
+
+JW Bike Shop menyediakan beragam varian sepeda berkualitas, mulai dari sepeda gunung, sepeda lipat, sepeda anak, hingga sepeda balap untuk kebutuhan sehari-hari maupun profesional. Kami berkomitmen untuk memberikan produk terbaik dan pelayanan yang ramah serta profesional kepada setiap pelanggan.
+
+Kami percaya bahwa bersepeda bukan hanya tentang olahraga, tetapi juga gaya hidup sehat dan kebebasan dalam beraktivitas. Oleh karena itu, kami terus menghadirkan produk-produk unggulan dengan harga bersaing dan layanan purna jual yang dapat diandalkan.
+
+JW Bike Shop – Lebih dari Sekadar Toko Sepeda, Mitra Bersepeda Anda.</p>
+                    
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Toko BikeShop">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Produk Kami</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card" onclick="openModal('mtb-pro', 'Sepeda Gunung Pro', 'Rp12.500.000', 'Sepeda gunung dengan frame alloy ringan, suspensi depan 100mm, dan 27.5\ wheelset. Cocok untuk trail dan cross country.', 'https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                    <div class="product-image">
+                        <img src="img/sepeda.1.jpeg" alt="Sepeda Gunung Pro">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sepeda Gunung Pro</h3>
+                        <p>Sepeda gunung performa tinggi untuk petualangan off-road</p>
+                        <div class="price">Rp12.500.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" onclick="openModal('road-racer', 'Sepeda Road Racer', 'Rp15.750.000', 'Sepeda balap dengan frame carbon fiber ultra ringan, groupset Shimano 105, dan wheelset aerodinamis. Dibuat untuk kecepatan di jalan raya.', 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                    <div class="product-image">
+                        <img src="img/foto1.jpg" alt="Sepeda Road Racer">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sepeda Road Racer</h3>
+                        <p>Sepeda balap performa tinggi untuk jalan raya</p>
+                        <div class="price">Rp15.750.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" onclick="openModal('city-bike', 'Sepeda City Comfort', 'Rp6.200.000', 'Sepeda kota yang nyaman dengan geometri tegak, sadel empuk, dan sistem gear internal. Dilengkapi dengan keranjang dan standar untuk kebutuhan harian.', 'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sepeda City Comfort">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sepeda City Comfort</h3>
+                        <p>Sepeda kota nyaman untuk aktivitas sehari-hari</p>
+                        <div class="price">Rp6.200.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card" onclick="openModal('kids-bike', 'Sepeda Anak Explorer', 'Rp3.500.000', 'Sepeda anak-anak dengan frame yang kuat, roda bantu yang bisa dilepas, dan sistem pengereman yang aman. Tersedia dalam berbagai warna menarik.', 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sepeda Anak Explorer">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sepeda Anak Explorer</h3>
+                        <p>Sepeda pertama yang sempurna untuk si kecil</p>
+                        <div class="price">Rp3.500.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card" onclick="openModal('folding-bike', 'Sepeda Lipat Urban', 'Rp8.900.000', 'Sepeda lipat praktis dengan frame alloy ringan, sistem lipat cepat, dan ukuran roda 20 inci. Cocok untuk komuter yang menggunakan transportasi umum.', 'https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sepeda Lipat Urban">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sepeda Lipat Urban</h3>
+                        <p>Solusi transportasi praktis untuk kota besar</p>
+                        <div class="price">Rp8.900.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card" onclick="openModal('electric-bike', 'Sepeda Listrik EcoRide', 'Rp25.000.000', 'Sepeda listrik dengan baterai tahan lama (80km jarak tempuh), motor 250W, dan mode pedal assist. Ramah lingkungan dan hemat energi.', 'https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sepeda Listrik EcoRide">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sepeda Listrik EcoRide</h3>
+                        <p>Masa depan transportasi perkotaan yang ramah lingkungan</p>
+                        <div class="price">Rp25.000.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BikeShop - Toko Sepeda Online. All Rights Reserved.</p>
+            <p>Jl. Nagoya No. 12, Batam | Telp: (021) 1234567</p>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="product-detail">
+                <div class="product-detail-image">
+                    <img id="modalImage" src="" alt="Product Image">
+                </div>
+                <div class="product-detail-info">
+                    <h2 id="modalTitle"></h2>
+                    <div class="product-detail-price" id="modalPrice"></div>
+                    <p class="product-detail-desc" id="modalDesc"></p>
+                    
+                    <div class="product-specs">
+                        <h4>Spesifikasi:</h4>
+                        <ul id="modalSpecs">
+                            <!-- Specs will be added by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <button class="btn" style="margin-top: 1.5rem;">Beli Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for the website
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+            this.reset();
+        });
+        
+        // Product data with specifications
+        const products = {
+            'mtb-pro': {
+                specs: [
+                    'Frame: Alloy 6061',
+                    'Fork: Suspensi hidrolik 100mm',
+                    'Ukuran Roda: 27.5 inci',
+                    'Gear: Shimano Deore 1x10 speed',
+                    'Rem: Hydraulic Disc Brake',
+                    'Berat: 13.5 kg',
+                    'Warna: Hitam/Merah, Biru/Perak'
+                ]
+            },
+            'road-racer': {
+                specs: [
+                    'Frame: Carbon Fiber',
+                    'Groupset: Shimano 105 11-speed',
+                    'Ukuran Roda: 700c',
+                    'Ban: Continental Grand Prix 25c',
+                    'Rem: Shimano Hydraulic Disc',
+                    'Berat: 8.2 kg',
+                    'Warna: Hitam/Abu-abu, Putih/Biru'
+                ]
+            },
+            'city-bike': {
+                specs: [
+                    'Frame: Steel',
+                    'Gear: Shimano Nexus 3-speed internal',
+                    'Ukuran Roda: 28 inci',
+                    'Rem: V-Brake',
+                    'Aksesoris: Keranjang depan, standar',
+                    'Berat: 15 kg',
+                    'Warna: Krem, Hijau, Biru'
+                ]
+            },
+            'kids-bike': {
+                specs: [
+                    'Frame: Alloy ringan',
+                    'Ukuran Roda: 16 inci',
+                    'Rem: Coaster brake',
+                    'Roda bantu: Dapat dilepas',
+                    'Tinggi minimal: 100 cm',
+                    'Berat: 8 kg',
+                    'Warna: Merah, Biru, Pink, Hijau'
+                ]
+            },
+            'folding-bike': {
+                specs: [
+                    'Frame: Alloy 6061',
+                    'Ukuran Roda: 20 inci',
+                    'Gear: Shimano 7-speed',
+                    'Rem: V-Brake',
+                    'Waktu lipat: < 15 detik',
+                    'Berat: 11.5 kg',
+                    'Warna: Hitam, Perak, Merah'
+                ]
+            },
+            'electric-bike': {
+                specs: [
+                    'Frame: Alloy 6061',
+                    'Motor: 250W hub motor',
+                    'Baterai: Lithium-ion 36V 10Ah',
+                    'Jarak tempuh: 80km (full charge)',
+                    'Waktu charge: 4-5 jam',
+                    'Kecepatan maks: 25 km/jam',
+                    'Berat: 22 kg',
+                    'Warna: Hitam, Putih'
+                ]
+            }
+        };
+        
+        function openModal(productId, title, price, desc, image) {
+            const modal = document.getElementById('productModal');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalPrice').textContent = price;
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('modalImage').src = image;
+            
+            // Clear previous specs
+            const specsList = document.getElementById('modalSpecs');
+            specsList.innerHTML = '';
+            
+            // Add new specs
+            products[productId].specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.textContent = spec;
+                specsList.appendChild(li);
+            });
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
